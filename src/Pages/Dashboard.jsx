@@ -1,10 +1,11 @@
 import React from "react";
 import MainHeading from "../Components/Ui/MainHeading";
 import Label from "../Components/Ui/Label";
-import Categorydata from "../Data/Dashboard_Collection.json";
-import Fundraiserdata from "../Data/Dashboard_Fundraiser.json";
+import Categorydata from "../Data/Dashboard_Collection.js";
+import Fundraiserdata from "../Data/Dashboard_Fundraiser";
 import Card from "../Components/Ui/Card";
 import { Link } from "react-router-dom";
+
 function Dashboard() {
   return (
     <section className="bg-[#F7F7F7] min-h-screen">
