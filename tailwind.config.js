@@ -8,8 +8,12 @@ export default {
       colors: {
         primary: "#F36D36",
         secondary: "#2E2E2E",
-        bg: "#f7f7f7",
+        backColor: "#f7f7f7",
         gray: "#6D6D6D",
+        darkGray: "#4A4A4A",
+        lightGray: "#DEDEDE",
+        btnSecondary: '#CBEAEE',
+        secondaryBtnText: '#257F91',
       },
       fontFamily: {
         avenir: ["Avenir"],
