@@ -132,12 +132,8 @@ function AiGenerator() {
 
         {/* Loader Section */}
         <div className="mt-[27px] max-w-[863px] w-full mx-auto bg-white rounded-t-[10px] shadow-[0px_2px_6px_1px_#00000026]">
-          <div className="relative rounded-[10px] overflow-hidden">
-            <img
-              src={image}
-              alt="image"
-              className="w-full h-[450px] object-cover"
-            />
+          <div className="relative rounded-t-[10px] overflow-hidden">
+            <img src={image} alt="image" className="w-full  object-cover" />
             <div className="absolute top-0 left-0 w-full p-[19px] flex justify-end gap-[14px] bg-white">
               <button
                 type="button"
