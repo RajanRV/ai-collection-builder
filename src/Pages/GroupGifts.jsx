@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import MainHeading from "../Components/Ui/MainHeading";
 import Dropdown from "../Components/Ui/DropDown";
 import Template1 from '../assets/images/template-1.png';
@@ -13,8 +12,6 @@ import Template8 from '../assets/images/template-8.png';
 import GiftBanner from '../assets/images/gifts-banner.png'
 
 function GroupGifts() {
-
-  const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("Sort: Free Templates");
 
   return (
