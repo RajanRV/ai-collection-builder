@@ -105,7 +105,7 @@ function AiGenerator() {
       <div className="min-h-screen w-[90%] max-w-[1366px] mx-auto flex flex-col flex-1">
         {/* Input Section  */}
         <div className="flex justify-center">
-          <div className=" pt-[16px] sm:mt-[67px] relative w-[90%] lg:w-[625px] mx-auto">
+          <div className=" mt-[16px] sm:mt-[67px] relative w-[90%] lg:w-[625px] mx-auto">
             <Input
               value={gift}
               onChange={(e) => setGift(e.target.value)}
