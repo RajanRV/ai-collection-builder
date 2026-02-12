@@ -12,8 +12,9 @@ export default {
         gray: "#6D6D6D",
         darkGray: "#4A4A4A",
         lightGray: "#DEDEDE",
-        btnSecondary: '#CBEAEE',
-        secondaryBtnText: '#257F91',
+        btnSecondary: "#CBEAEE",
+        secondaryBtnText: "#257F91",
+        secondaryBadgeText: " #FFF0EA",
       },
       fontFamily: {
         avenir: ["Avenir"],

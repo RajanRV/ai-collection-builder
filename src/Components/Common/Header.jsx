@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import CaretLeft from "../../assets/icons/CaretLeft.svg";
+import Logo from "../../assets/icons/Logo.svg";
 
 function Header() {
   const navigate = useNavigate();
@@ -26,11 +28,7 @@ function Header() {
             className="flex items-center gap-[4px] cursor-pointer"
             onClick={handleBack}
           >
-            <img
-              src="/icons/CaretLeft.svg"
-              alt="back"
-              className="cursor-pointer"
-            />
+            <img src={CaretLeft} alt="back" className="cursor-pointer" />
             <h1 className="text-primary text-[14px] sm:text-[16px] font-[500] py-[20px] font-avenir">
               {location.pathname === "/" ? "Dashboard" : "Previous"}
             </h1>
@@ -45,7 +43,7 @@ function Header() {
               </h1>
             )}
             <img
-              src="/icons/Logo.svg"
+              src={Logo}
               alt="logo"
               className="h-[30px] sm:h-auto m-auto w-[30px] sm:w-auto cursor-pointer"
             />

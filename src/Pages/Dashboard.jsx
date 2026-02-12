@@ -1,10 +1,12 @@
 import React from "react";
 import MainHeading from "../Components/Ui/MainHeading";
 import Label from "../Components/Ui/Label";
-import Categorydata from "../Data/Dashboard_Collection.json";
-import Fundraiserdata from "../Data/Dashboard_Fundraiser.json";
+import Categorydata from "../Data/Dashboard_Collection.js";
+import Fundraiserdata from "../Data/Dashboard_Fundraiser";
 import Card from "../Components/Ui/Card";
 import { Link } from "react-router-dom";
+import Question from "../assets/icons/Question.svg";
+
 function Dashboard() {
   return (
     <section className="bg-[#F7F7F7] min-h-screen">
@@ -38,7 +40,7 @@ function Dashboard() {
           <Label title="FUNDRAISER" className="text-[14px] sm:text-[18px]" />
           <div className="flex gap-[3px] items-center">
             <img
-              src="/icons/Question.svg"
+              src={Question}
               alt="Question"
               className="h-[20px] w-[20px] sm:w-[auto] sm:h-auto m-auto"
             />
@@ -66,7 +68,7 @@ function Dashboard() {
         </div>
 
         {/* only for test ai generator page */}
-        <Link to="/ai-generator">Ai Generator</Link>
+        {/* <Link to="/ai-generator">Ai Generator</Link> */}
       </div>
     </section>
   );
