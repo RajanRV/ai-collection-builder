@@ -1,4 +1,5 @@
 import React from "react";
+import Badge from "./badge";
 import { useNavigate } from "react-router-dom";
 
 function Card({ icon, title, description, badge, path, onClick }) {
@@ -20,11 +21,7 @@ function Card({ icon, title, description, badge, path, onClick }) {
             {title}
           </h2>
         </div>
-        {badge && (
-          <span className="bg-[#CBEAEE] text-[#1D6371] text-[12px] sm:text-[14px] font-[400] font-avenir px-[8px] sm:px-[16px] py-[4px] sm:py-[8px] rounded-[20px] sm:rounded-[40px]">
-            {badge}
-          </span>
-        )}
+        {badge && <Badge badge={badge} />}
       </div>
 
       <p className="text-secondary text-[14px] sm:text-[16px] font-[400] font-avenir">
