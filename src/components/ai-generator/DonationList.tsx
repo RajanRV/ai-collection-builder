@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { Copy, Trash2 } from "lucide-react";
 import type { DonationItem } from "@/types/donation";
@@ -14,7 +13,6 @@ type DonationListProps = {
   onDonationTitleChange: (value: string) => void;
   onDonationDescriptionChange: (value: string) => void;
   onAddDonation: (title: string, description: string) => void;
-  onCopyDonation: (donation: DonationItem) => void;
   onDeleteDonation: (id: string) => void;
   onCloseAddBox: () => void;
 };
@@ -28,7 +26,6 @@ export default function DonationList({
   onDonationTitleChange,
   onDonationDescriptionChange,
   onAddDonation,
-  onCopyDonation,
   onDeleteDonation,
   onCloseAddBox,
 }: DonationListProps) {
@@ -148,7 +145,7 @@ export default function DonationList({
               <div className="absolute top-[4px] right-[4px] flex opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto">
                 <button
                   type="button"
-                  onClick={() => onCopyDonation(donation)}
+                  onClick={() => {}}
                   className="group w-[40px] h-[40px] bg-white border border-[#E5E5E5] rounded-[6px] flex items-center justify-center hover:bg-gray-50 transition-colors"
                   aria-label="Duplicate donation"
                 >

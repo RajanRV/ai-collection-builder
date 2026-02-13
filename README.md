@@ -94,3 +94,6 @@ Errors return `{ "error": "string" }` with status 400 or 502.
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Deploying on Vercel](https://nextjs.org/docs/app/building-your-application/deploying)
+
+## Future Enhancements
+- For now kept minimal components and written html code to the `page.tsx`. 

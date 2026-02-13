@@ -36,7 +36,6 @@ export default function AiGeneratorPage() {
     showDonationBox,
     setShowDonationBox,
     handleAddDonation,
-    handleCopyDonation,
     handleDeleteDonation,
   } = useDonations();
 
@@ -162,11 +161,7 @@ export default function AiGeneratorPage() {
         </div>
 
         <div className="mt-[16px] sm:mt-[33px] px-[16px] py-[12px] mx-auto font-avenir bg-[#FFF0EA] text-[#2E2E2E] text-[14px] sm:text-[16px] font-[500] rounded-[8px]">
-          Here is an example of a group gift collection for{" "}
-          {gift
-            .toLowerCase()
-            .replace("i'm collecting a group gift for", "")
-            .trim() || "your occasion"}
+          Here is an example of a group gift collection for your occasion
         </div>
 
         {result && (
@@ -185,7 +180,6 @@ export default function AiGeneratorPage() {
               onDonationTitleChange={setDonationTitle}
               onDonationDescriptionChange={setDonationDescription}
               onAddDonation={handleAddDonation}
-              onCopyDonation={handleCopyDonation}
               onDeleteDonation={handleDeleteDonation}
               onCloseAddBox={() => {
                 setDonationTitle("");

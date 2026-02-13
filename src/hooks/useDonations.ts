@@ -25,17 +25,6 @@ export function useDonations() {
     ]);
   }, []);
 
-  const handleCopyDonation = useCallback((donation: DonationItem) => {
-    setDonations((prev) => [
-      ...prev,
-      {
-        id: generateId(),
-        title: donation.title,
-        description: donation.description,
-      },
-    ]);
-  }, []);
-
   const handleDeleteDonation = useCallback((id: string) => {
     setDonations((prev) => prev.filter((d) => d.id !== id));
   }, []);
@@ -49,7 +38,6 @@ export function useDonations() {
     showDonationBox,
     setShowDonationBox,
     handleAddDonation,
-    handleCopyDonation,
     handleDeleteDonation,
   };
 }
