@@ -1,16 +1,99 @@
-# React + Vite
+# AI Collection Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Next.js app for building donation and group gift collections. Use the dashboard to choose collection types, then create group gift campaigns from scratch or with the AI generator (Groq + Stability AI).
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dashboard** – Collection types (e.g. Online Shop, Group Gifts, Forms) and fundraiser options
+- **Group Gifts** – Templates and “create from scratch” or “Use AI to create”
+- **AI Generator** – Describe your group gift; get AI-generated title, description, and campaign image
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Next.js](https://nextjs.org) 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+- Lucide React (icons)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Install
+
+```bash
+npm install
+```
+
+### Environment variables
+
+Copy the example env file and set your API keys:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and set:
+
+| Variable             | Required | Description |
+|----------------------|----------|-------------|
+| `GROQ_API_KEY`       | Yes      | [Groq](https://console.groq.com/) API key for LLM content |
+| `STABILITY_API_KEY`  | Yes      | [Stability AI](https://platform.stability.ai/) key for images |
+| `GROQ_MODEL`         | No       | Groq model (default: `llama-3.3-70b-versatile`) |
+
+### Run development server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Build and run production
+
+```bash
+npm run build
+npm start
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project structure
+
+- `src/app/` – App Router pages and layouts (`page.tsx`, `layout.tsx`, `error.tsx`, `not-found.tsx`, `global-error.tsx`)
+- `src/app/api/` – API routes (e.g. `ai-generator` for AI generation)
+- `src/components/` – UI components (`ui/`, `common/`, `ai-generator/`)
+- `src/hooks/` – Custom hooks (`useAiGenerator`, `useDonations`)
+- `src/types/` – TypeScript types and `env.d.ts`
+- `src/constants/` – App constants
+- `src/utils/` – Utilities (validation, env, logger)
+- `src/data/` – Static JSON data
+- `public/` – Static assets (icons, images, fonts)
+
+## API
+
+### POST `/api/ai-generator`
+
+Generates donation campaign content (title, description, image) from a short requirement.
+
+**Body:** `{ "requirement": "string" }` (max 400 chars; should be donation/fundraiser-related)
+
+**Response:** `{ "title": "string", "description": "string", "imageBase64": "string" }`
+
+Errors return `{ "error": "string" }` with status 400 or 502.
+
+## Learn more
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Deploying on Vercel](https://nextjs.org/docs/app/building-your-application/deploying)
+
+## Future Enhancements
+- For now kept minimal components and written html code to the `page.tsx`. 
