@@ -345,11 +345,6 @@ const AiGeneratorPage: React.FC = () => {
                   </div>
                 )}
                 <div className="mt-[16px]">
-                  <SubHeading
-                    title="Hey everyone!"
-                    className="text-[16px] sm:text-[18px]"
-                  />
-
                   {isDescriptionEditing ? (
                     <div className="relative mt-[8px]">
                       <textarea

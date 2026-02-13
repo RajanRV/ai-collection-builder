@@ -158,10 +158,6 @@ function AiGenerator() {
               />
               <div className="mt-[16px]">
                 <SubHeading
-                  title="Hey everyone!"
-                  className="text-[16px] sm:text-[18px] leading-normal"
-                />
-                <SubHeading
                   title={subHeading}
                   className="text-[16px] sm:text-[18px] leading-normal"
                 />

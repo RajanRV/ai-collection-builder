@@ -17,6 +17,8 @@ function isLikelyDonationRelated(text: string): boolean {
     "raising money",
     "donor",
     "donors",
+    "gift"
+
   ];
 
   return keywords.some((word) => lower.includes(word));
