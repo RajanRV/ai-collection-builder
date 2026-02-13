@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import MainHeading from "@/components/ui/MainHeading";
+import Image from "next/image";
+import Heading from "@/components/ui/Heading";
 import Dropdown from "@/components/ui/Dropdown";
 import { useRouter } from "next/navigation";
 
@@ -13,8 +14,9 @@ const GroupGiftsPage: React.FC = () => {
     <section className="bg-backColor">
       <div className="max-w-[1366px] w-[93%] mx-auto">
         <div className="page-heading pt-10">
-          <MainHeading
+          <Heading
             title="Collection: Group Gifts"
+            variant="main"
             className="text-[24px] sm:text-[30px] lg:text-[40px] mb-4"
           />
           <p className="text-secondary text-sm sm:text-lg font-normal font-avenir">
@@ -64,7 +66,7 @@ const GroupGiftsPage: React.FC = () => {
             </div>
             <div className="right-part">
               <div className="gift-banner-image flex justify-end">
-                <img src="/assets/images/gifts-banner.png" alt="template" />
+                <Image src="/assets/images/gifts-banner.png" alt="Group gifts" width={600} height={400} className="w-full h-auto" />
               </div>
             </div>
           </div>
@@ -86,10 +88,12 @@ const GroupGiftsPage: React.FC = () => {
           <div className="template-grid-part grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
               <div key={index} className="template-card">
-                <img
+                <Image
                   src={`/assets/images/template-${index}.png`}
-                  alt={`template-${index}`}
-                  className="w-full"
+                  alt={`Template ${index}`}
+                  width={300}
+                  height={200}
+                  className="w-full h-auto"
                 />
               </div>
             ))}

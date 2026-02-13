@@ -1,4 +1,5 @@
-import MainHeading from "@/components/ui/MainHeading";
+import Image from "next/image";
+import Heading from "@/components/ui/Heading";
 import Label from "@/components/ui/Label";
 import Card from "@/components/ui/Card";
 
@@ -84,8 +85,9 @@ export default function Home() {
   return (
     <section className="bg-backColor min-h-screen">
       <div className="pt-[16px] sm:pt-[30px] lg:pt-[53px] max-w-[1366px] w-[93%] mx-auto">
-        <MainHeading
+        <Heading
           title="What would you like to build today?"
+          variant="main"
           className="text-[24px] sm:text-[30px] lg:text-[40px]"
         />
 
@@ -109,10 +111,12 @@ export default function Home() {
         <div className="flex gap-[6px]">
           <Label title="FUNDRAISER" className="text-[14px] sm:text-[18px]" />
           <div className="flex gap-[3px] items-center">
-            <img
+            <Image
               src="/icons/Question.svg"
               alt="Question"
-              className="h-[20px] w-[20px] sm:w-[auto] sm:h-auto m-auto"
+              width={20}
+              height={20}
+              className="h-[20px] w-[20px] sm:w-auto sm:h-auto m-auto"
             />
             <a
               href="#"

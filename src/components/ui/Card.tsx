@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Badge from "./Badge";
 import Link from "next/link";
 
@@ -17,7 +18,7 @@ const Card: React.FC<CardProps> = ({ icon, title, description, badge, path }) =>
     <div className="bg-white py-[18px] sm:py-[24px] pl-[16px] sm:pl-[28px] pr-[20px] cursor-pointer rounded-[4px] flex flex-col gap-[8px] sm:gap-[13px] border border-[#DEDEDE]">
       <div className="flex items-center justify-between">
         <div className="flex gap-[6px] sm:gap-[10px] items-center">
-          <img src={icon} alt="icon" className="h-[28px] sm:h-auto" />
+          <Image src={icon} alt="" width={28} height={28} className="h-[28px] sm:h-auto w-auto" />
           <h2 className="text-secondary text-[16px] sm:text-[20px] font-[800] font-avenir flex gap-[13px]">
             {title}
           </h2>

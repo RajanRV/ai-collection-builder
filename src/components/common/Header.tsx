@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 const Header: React.FC = () => {
@@ -27,9 +28,11 @@ const Header: React.FC = () => {
             className="flex items-center gap-[4px] cursor-pointer"
             onClick={handleBack}
           >
-            <img
+            <Image
               src="/icons/CaretLeft.svg"
-              alt="back"
+              alt="Back"
+              width={24}
+              height={24}
               className="cursor-pointer"
             />
             <h1 className="text-primary text-[14px] sm:text-[16px] font-[500] py-[20px] font-avenir">
@@ -46,9 +49,11 @@ const Header: React.FC = () => {
                 Back to Dashboard
               </button>
             )}
-            <img
+            <Image
               src="/icons/Logo.svg"
-              alt="logo"
+              alt="Logo"
+              width={120}
+              height={30}
               className="h-[30px] sm:h-auto m-auto w-[30px] sm:w-auto cursor-pointer"
             />
           </div>

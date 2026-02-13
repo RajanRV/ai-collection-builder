@@ -5,4 +5,3 @@ declare namespace NodeJS {
     STABILITY_API_KEY?: string;
   }
 }
-

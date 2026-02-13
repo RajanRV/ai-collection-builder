@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { AiGeneratorResult } from "@/types/ai-generator";
-
-const MAX_REQUIREMENT_LENGTH = 400;
+import { getRequiredEnv, getOptionalEnv } from "@/utils/env";
+import { MAX_REQUIREMENT_LENGTH } from "@/constants/ai-generator";
 
 function isLikelyDonationRelated(text: string): boolean {
   const lower = text.toLowerCase();
@@ -25,9 +25,7 @@ function isLikelyDonationRelated(text: string): boolean {
 }
 
 async function generateCampaignImage(prompt: string): Promise<string> {
-  if (!process.env.STABILITY_API_KEY) {
-    throw new Error("Server misconfigured: STABILITY_API_KEY is missing.");
-  }
+  const apiKey = getRequiredEnv("STABILITY_API_KEY");
 
   const response = await fetch(
     "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image",
@@ -36,7 +34,7 @@ async function generateCampaignImage(prompt: string): Promise<string> {
       headers: {
         "Content-Type": "application/json",
         Accept: "image/png",
-        Authorization: `Bearer ${process.env.STABILITY_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         text_prompts: [
@@ -68,20 +66,13 @@ async function generateCampaignImage(prompt: string): Promise<string> {
   // Response is raw PNG binary — must use arrayBuffer, NOT text()
   const buffer = await response.arrayBuffer();
   const base64 = Buffer.from(buffer).toString("base64");
-
-  return `${base64}`;
+  return base64;
 }
 
 export async function POST(request: NextRequest) {
   try {
-    if (!process.env.GROQ_API_KEY) {
-      return NextResponse.json(
-        { error: "Server misconfigured: GROQ_API_KEY is missing." },
-        { status: 500 },
-      );
-    }
-
-    const model = process.env.GROQ_MODEL ?? "llama-3.3-70b-versatile";
+    const apiKey = getRequiredEnv("GROQ_API_KEY");
+    const model = getOptionalEnv("GROQ_MODEL", "llama-3.3-70b-versatile");
 
     const body = (await request.json()) as { requirement?: string };
     const requirement = (body.requirement ?? "").trim();
@@ -140,7 +131,7 @@ and explain the problem only in your internal reasoning, not in the JSON.
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+          Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
           model,
@@ -207,13 +198,11 @@ and explain the problem only in your internal reasoning, not in the JSON.
 
     try {
       imageBase64 = await generateCampaignImage(imagePrompt);
-    } catch (imgError) {
-      console.error("Image generation failed:", imgError);
+    } catch {
       return NextResponse.json(
         {
           error:
             "Failed to generate campaign image. Please try again.",
-          details: imgError instanceof Error ? imgError.message : String(imgError),
         },
         { status: 502 },
       );
@@ -226,10 +215,11 @@ and explain the problem only in your internal reasoning, not in the JSON.
     };
 
     return NextResponse.json(result satisfies AiGeneratorResult);
-  } catch {
-    return NextResponse.json(
-      { error: "Unexpected error while generating donation content." },
-      { status: 500 },
-    );
+  } catch (err) {
+    const message =
+      err instanceof Error && err.message.startsWith("Server misconfigured")
+        ? err.message
+        : "Unexpected error while generating donation content.";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
